@@ -18,8 +18,16 @@ const NewTour = () => {
       toast.error("no tokens");
       return null;
     },
-    onError: () => {
-      toast.error("no tokens ;(");
+    onError: (error) => {
+      if (error?.response?.status === 500) {
+        toast.error(
+          "Oops! Server error. Please try again later. -- no token --"
+        );
+      } else if (error?.response?.status === 404) {
+        toast.error("Requested resource not found. -- no token --");
+      } else {
+        toast.error("An unknown error occurred. -- no token --");
+      }
     },
   });
 

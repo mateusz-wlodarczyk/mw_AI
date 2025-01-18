@@ -13,7 +13,7 @@ export const generateChatResponse = async (chatMessage) => {
       temerature: 0,
       max_tokens: 100,
     });
-
+    console.log("dziala/>", response);
     return response.choices[0].message;
   } catch (error) {
     return null;
@@ -34,7 +34,7 @@ Once you have a list, create a one-day tour. Response should be in the following
   }
 }
 If you can't find info on exact ${city}, or ${city} does not exist, or it's population is less than 1, or it is not located in the following ${country} return { "tour": null }, with no additional characters.`;
-  console.log("okok");
+
   try {
     const response = await openai.chat.completions.create({
       messages: [

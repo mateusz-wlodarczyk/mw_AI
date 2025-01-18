@@ -10,8 +10,16 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const { mutate, isPending, error } = useMutation({
     mutationFn: (query) => generateChatResponse([...messages, query]),
-    onError: () => {
-      toast.error("no tokens ;(");
+    onError: (error) => {
+      if (error?.response?.status === 500) {
+        toast.error(
+          "Oops! Server error. Please try again later. -- no token --"
+        );
+      } else if (error?.response?.status === 404) {
+        toast.error("Requested resource not found. -- no token --");
+      } else {
+        toast.error("An unknown error occurred. -- no token --");
+      }
     },
     onSuccess: (data) => {
       if (!data) {
@@ -28,7 +36,7 @@ const Chat = () => {
     setMessages((prev) => [...prev, query]);
     setText("");
   };
-
+  console.log(messages);
   return (
     <div className="min-h-[calc(100vh-6rem)] grid grid-rows-[1fr,auto]">
       <div>

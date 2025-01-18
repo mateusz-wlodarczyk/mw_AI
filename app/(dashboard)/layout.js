@@ -3,7 +3,7 @@ import { FaBarsStaggered } from "react-icons/fa6";
 
 const Layout = ({ children }) => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open ">
       <input type="checkbox" id="my-drawer-2" className="drawer-toggle" />
       <div className="drawer-content">
         <label
@@ -26,5 +26,4 @@ const Layout = ({ children }) => {
     </div>
   );
 };
-
 export default Layout;
