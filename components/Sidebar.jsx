@@ -1,12 +1,13 @@
 import NavLinks from "./NavLinks";
-import SidebarHeader from "./SidebarHeader";
 
 const Sidebar = () => {
   return (
-    <div className="px-4 w-80 min-h-full bg-base-300 py-12 grid grid-rows-[auto,1fr,auto]">
-      <SidebarHeader />
-      <NavLinks />
+    <div className="drawer-content">
+      <div className="bg-base-200 p-4">
+        <NavLinks />
+      </div>
     </div>
   );
 };
+
 export default Sidebar;

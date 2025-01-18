@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const Chat = () => {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, error } = useMutation({
     mutationFn: (query) => generateChatResponse([...messages, query]),
     onError: () => {
       toast.error("no tokens ;(");

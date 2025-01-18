@@ -8,6 +8,7 @@ const NewTour = () => {
     mutate,
     isPending,
     data: tour,
+    error,
   } = useMutation({
     mutationFn: async (destination) => {
       const newTour = await generateTourResponse(destination);
