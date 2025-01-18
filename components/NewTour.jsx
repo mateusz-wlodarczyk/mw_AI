@@ -17,6 +17,9 @@ const NewTour = () => {
       toast.error("no tokens");
       return null;
     },
+    onError: () => {
+      toast.error("no tokens ;(");
+    },
   });
 
   const handleSubmit = (e) => {

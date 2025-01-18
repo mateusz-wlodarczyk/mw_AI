@@ -10,7 +10,9 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const { mutate, isPending } = useMutation({
     mutationFn: (query) => generateChatResponse([...messages, query]),
-
+    onError: () => {
+      toast.error("no tokens ;(");
+    },
     onSuccess: (data) => {
       if (!data) {
         toast.error("no tokens ;(");
